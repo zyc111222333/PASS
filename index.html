@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <title>学生离校审批结果查询</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="edge" />
+		<script src="static/fakeme.umd.min.js"></script>
+		<link rel="shortcut icon" href="static/favicon.ico" />
+		<link id="bootstrapCss" rel="stylesheet" type="text/css" href="static/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="static/dreamlu.css" />
+	    <style>
+	    	.result{
+	    		border:1px solid #ccc;
+	    		border-radius:5px;
+	    		margin:0 auto;
+	    		width:95%;
+	    		height:200px;
+	    		font-size:36px;
+				text-align:center;
+				line-height:100px;
+				color:white;
+	    	}
+	    	.green{
+	    		background-color:green;
+	    	}
+	    	.red{
+	    		background-color:red;
+	    	}
+	    	.yellow{
+	    		color:#000;
+	    		background-color:yellow;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div id="time"  style="width:100%;text-align:center;font-size:32px;font-weight:bold;"></div>
+		<div class="container-fluid">
+			<div class="result green">
+					已批准离校
+				</div>
+			</div>
+		<div id="hi" style="width:100%;text-align:center;font-size:24px;font-weight:bold;">
+			学生学号：200203020126<br>
+			学生姓名&nbsp;：张颖聪<br>
+		</div>
+		
+		
+		<script type="text/javascript">
+		function settime(){
+                var date = new Date();//获得当前时间
+                var yy = date.getFullYear();//年份
+                var mm = date.getMonth() + 1;//获得月份
+                mm = (mm < 10 ? "0" + mm : mm);//月份小于10时，前面加个0(例如9 ->09)天，小时，分钟，秒同理
+                var dd = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());//天
+                var hours = (date.getHours() < 10 ? "0" + date.getHours() : date.getHours());//小时
+                var minutes = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());//分钟
+                var seconds = (date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds());//秒
+                document.getElementById("time").innerHTML = yy + '-' + mm + "-" + dd + " " + hours + ':' + minutes + ':' + seconds;
+            }
+
+        settime();
+        setInterval("settime()", 1000);
+        
+		</script>
+
+		<script>
+        let code = function () {
+            let num = parseInt(Math.random()*40+1);
+            if (num < 10) {
+              return '0' + num;
+            } else {
+              return num;
+            }
+          }
+
+        let name = function(){
+            let fm = new FakeMe({sex: "male" });
+            let name = fm.name()[0];
+            while (true) {
+              if (name.length != 3) {
+                name = fm.name()[0];
+              } else {
+                return name;
+                break;
+              }
+            }
+        }
+        </script>
+	</body>
+</html>
